@@ -1,17 +1,16 @@
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 
 public class Main {
     private AndroidDriver driver;
-
+    
     @BeforeMethod
     public void setUp() throws MalformedURLException {
         DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -29,24 +28,24 @@ public class Main {
         capabilities.setCapability("appPackage", "com.android.calculator2");
         // Имя activity которые мы хотим запустить из пакета, указанного выше. (APK info)
         capabilities.setCapability("appActivity", "com.android.calculator2.Calculator");
-
+        
         driver = new AndroidDriver(new URL("http://0.0.0.0:4723/wd/hub"), capabilities);
     }
-
+    
     @Test
     public void testCal() {
-        WebElement buttonTwo = driver.findElement(By.id("com.android.calculator2:id/digit_2"));
+        MobileElement buttonTwo = (MobileElement) driver.findElementById("com.android.calculator2:id/digit_2");
         buttonTwo.click();
-
-        driver.findElement(By.id("com.android.calculator2:id/op_add")).click();
-
-        driver.findElement(By.id("com.android.calculator2:id/digit_3")).click();
-
-        WebElement results = driver.findElement(By.id("com.android.calculator2:id/result"));
-
+        
+        driver.findElementById("com.android.calculator2:id/op_add").click();
+        
+        driver.findElementById("com.android.calculator2:id/digit_3").click();
+        
+        MobileElement results = (MobileElement) driver.findElementById("com.android.calculator2:id/result");
+        
         Assert.assertEquals("5", results.getText(), "Result should be equals 5");
     }
-
+    
     @AfterMethod
     public void teardown() {
         driver.quit();
