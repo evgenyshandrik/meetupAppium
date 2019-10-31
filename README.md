@@ -10,7 +10,7 @@ Android
 Before the run test you should set <udid> your device/emulator: 
 
 ```java
-capabilities.setCapability("udid", "<your udidг>");
+capabilities.setCapability("udid", "<your udid>");
 ```
 
 ### Run
