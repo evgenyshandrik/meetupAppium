@@ -8,7 +8,7 @@ import org.testng.annotations.*;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 
-public class Main {
+public class CalculatorTest {
     private AndroidDriver driver;
     
     @BeforeMethod
