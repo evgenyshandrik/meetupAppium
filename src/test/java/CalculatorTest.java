@@ -33,7 +33,7 @@ public class CalculatorTest {
     }
     
     @Test
-    public void testCal() {
+    public void testAddition() {
         MobileElement buttonTwo = (MobileElement) driver.findElementById("com.android.calculator2:id/digit_2");
         buttonTwo.click();
         
